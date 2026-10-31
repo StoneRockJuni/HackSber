@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stroykontur.local/schemas/audit_event.schema.json",
+  "title": "СтройКонтур / Audit Trail Event",
+  "description": "Событие append-only журнала аудита. hash_self = SHA-256 от канонического JSON записи без полей hash_self, hmac_alg, hmac_sha256. hmac_sha256 = HMAC-SHA256 от канонического JSON записи без hmac_alg и hmac_sha256 (при настроенном ключе). canonical JSON: sort_keys=true, separators=(',', ':'), ensure_ascii=false, allow_nan=false.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "seq",
+    "timestamp",
+    "actor",
+    "actor_role",
+    "action",
+    "object_hash",
+    "decision",
+    "details",
+    "hash_prev",
+    "hash_self"
+  ],
+  "properties": {
+    "seq": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Монотонный номер записи. Начинается с 1 и идёт без пропусков."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Доверенное время сервера в UTC (ISO-8601 с часовым поясом). Клиентский timestamp допускается только внутри details.claimed_timestamp."
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:@+\\-]{0,127}$",
+      "description": "Псевдоним действующего лица: inspector:ivanov, ai_director, system и т.п. ФИО в открытом виде не допускается."
+    },
+    "actor_role": {
+      "type": "string",
+      "enum": [
+        "inspector",
+        "risk_officer",
+        "auditor",
+        "ai_director",
+        "contractor",
+        "system",
+        "security_admin",
+        "service"
+      ],
+      "description": "Роль на момент действия. Нужна для разделения обязанностей."
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:\\-]{0,63}$",
+      "description": "Действие: SNAPSHOT_VERIFIED, AI_DECISION, ACCESS_DENIED, ROLE_CHANGED и т.п."
+    },
+    "object_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 объекта действия: файла снимка, паспорта или канонического JSON другого объекта. Верхний регистр не допускается."
+    },
+    "decision": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9_.:\\-]{1,64}$",
+      "description": "Решение/результат: VERIFIED, REJECTED, NEEDS_REVIEW, ALLOW, DENY, RECORDED и т.п."
+    },
+    "details": {
+      "type": "object",
+      "maxProperties": 64,
+      "description": "Контекст события. Не должен содержать ФИО, телефоны, адреса, номера договоров, пароли/ключи и полные локальные пути. Лимит приложения — 32 КБ канонического JSON.",
+      "propertyNames": {
+        "maxLength": 64
+      }
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:@+\\-]{0,127}$",
+      "description": "Опциональная связка событий одного бизнес-процесса (например, ID загрузки или решения). Не должен быть ПДн."
+    },
+    "hash_prev": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "hash_self предыдущей записи. Для первой записи — 64 нуля (GENESIS_HASH)."
+    },
+    "hash_self": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "SHA-256 канонического JSON записи без hash_self, hmac_alg и hmac_sha256."
+    },
+    "hmac_alg": {
+      "type": "string",
+      "const": "HMAC-SHA256",
+      "description": "Алгоритм подписи записи. Присутствует только вместе с hmac_sha256."
+    },
+    "hmac_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "HMAC-SHA256 канонического JSON записи без hmac_alg и hmac_sha256. Ключ — только из KMS/HSM/env, не из кода."
+    }
+  },
+  "dependentRequired": {
+    "hmac_alg": [
+      "hmac_sha256"
+    ],
+    "hmac_sha256": [
+      "hmac_alg"
+    ]
+  },
+  "examples": [
+    {
+      "seq": 1,
+      "timestamp": "2026-08-07T04:02:14.512Z",
+      "actor": "inspector:ivanov",
+      "actor_role": "inspector",
+      "action": "SNAPSHOT_VERIFIED",
+      "object_hash": "9a7d2f1c4e6b8a0d3f5e7c9b1a2d4f6e8c0b2a4d6f8e0c2a4b6d8f0e2c4a6b8d",
+      "decision": "VERIFIED",
+      "details": {
+        "passport_id": "sp_7c1e9a2b4d6f8a0c2e4b6d8f0a1c3e5b",
+        "trust_level": "high",
+        "cadastral_distance_m": 8.37
+      },
+      "correlation_id": "ft_20260807_0017",
+      "hash_prev": "0000000000000000000000000000000000000000000000000000000000000000",
+      "hash_self": "de8a4ac06c464953f4751eaafaf66e4bc6858d70d5d5b505ec66c6e8ec234ed7"
+    }
+  ],
+  "x-security-notes": [
+    "Схема проверяет структуру, но не пересчитывает хэши. Криптографическая проверка — verify_audit_chain().",
+    "Запись с hmac_sha256 обязана проверяться с тем же ключом; отсутствие ключа = ошибка верификации, а не downgrade.",
+    "Удаление последних записей детектируется только внешним анкором AUDIT_EXPECTED_HEAD/AUDIT_EXPECTED_COUNT в WORM.",
+    "JSON Schema не заменяет WORM, KMS/HSM и контроль доступа к файлу."
+  ]
+}
