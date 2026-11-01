@@ -1,0 +1,161 @@
+{
+  "val_images": 10,
+  "stage_accuracy": 0.6,
+  "confusion": {
+    "100%->0%": 2,
+    "100%->100%": 1,
+    "100%->50%": 2,
+    "50%->50%": 5
+  },
+  "rows": [
+    {
+      "image": "DJI_20260807142835_0002_D_JPG.rf.1f2ae2e0171e2b942a1b77b71eaca63b.jpg",
+      "true_classes": [
+        "foundation"
+      ],
+      "true_stage": "50%",
+      "predicted_classes": [
+        "foundation",
+        "roof_finished"
+      ],
+      "predicted_stage": "50%",
+      "confidence": 0.45,
+      "needs_manual_review": true
+    },
+    {
+      "image": "DJI_20260807142835_0002_D_JPG.rf.757190364537c3d25d8bcecb96ff6a9e.jpg",
+      "true_classes": [
+        "foundation"
+      ],
+      "true_stage": "50%",
+      "predicted_classes": [
+        "foundation",
+        "roof_finished"
+      ],
+      "predicted_stage": "50%",
+      "confidence": 0.45,
+      "needs_manual_review": true
+    },
+    {
+      "image": "DJI_20260807142835_0002_D_JPG.rf.cdd99589b9e4d84bd0580587dd7fc2b0.jpg",
+      "true_classes": [
+        "foundation"
+      ],
+      "true_stage": "50%",
+      "predicted_classes": [
+        "fence",
+        "roof_finished"
+      ],
+      "predicted_stage": "50%",
+      "confidence": 0.45,
+      "needs_manual_review": true
+    },
+    {
+      "image": "DJI_20260807142835_0002_D_JPG.rf.d8e33ccbad074afa282864923f0bc207.jpg",
+      "true_classes": [
+        "foundation"
+      ],
+      "true_stage": "50%",
+      "predicted_classes": [
+        "roof_finished"
+      ],
+      "predicted_stage": "50%",
+      "confidence": 0.45,
+      "needs_manual_review": true
+    },
+    {
+      "image": "DJI_20260807142835_0002_D_JPG.rf.d8f57ca38d5022627ef928d2241680e9.jpg",
+      "true_classes": [
+        "foundation"
+      ],
+      "true_stage": "50%",
+      "predicted_classes": [
+        "foundation",
+        "roof_finished"
+      ],
+      "predicted_stage": "50%",
+      "confidence": 0.45,
+      "needs_manual_review": true
+    },
+    {
+      "image": "DJI_20260807144205_0005_D_JPG.rf.7c06371fcc1e87242728b5361392fd0b.jpg",
+      "true_classes": [
+        "doors",
+        "roof_finished",
+        "walls",
+        "windows"
+      ],
+      "true_stage": "100%",
+      "predicted_classes": [
+        "roof_finished",
+        "walls",
+        "windows"
+      ],
+      "predicted_stage": "100%",
+      "confidence": 0.911,
+      "needs_manual_review": false
+    },
+    {
+      "image": "DJI_20260807144205_0005_D_JPG.rf.cea519af58d7d33a248e0975e51cd1bb.jpg",
+      "true_classes": [
+        "doors",
+        "roof_finished",
+        "walls",
+        "windows"
+      ],
+      "true_stage": "100%",
+      "predicted_classes": [
+        "walls"
+      ],
+      "predicted_stage": "50%",
+      "confidence": 0.651,
+      "needs_manual_review": true
+    },
+    {
+      "image": "DJI_20260807144205_0005_D_JPG.rf.eb614d70aa72e01e31e6ced8ec149b3e.jpg",
+      "true_classes": [
+        "doors",
+        "roof_finished",
+        "walls",
+        "windows"
+      ],
+      "true_stage": "100%",
+      "predicted_classes": [
+        "walls",
+        "windows"
+      ],
+      "predicted_stage": "50%",
+      "confidence": 0.691,
+      "needs_manual_review": true
+    },
+    {
+      "image": "DJI_20260807144205_0005_D_JPG.rf.f68cdab5f13f7a07370cd1d2c3f99f2b.jpg",
+      "true_classes": [
+        "doors",
+        "roof_finished",
+        "walls",
+        "windows"
+      ],
+      "true_stage": "100%",
+      "predicted_classes": [],
+      "predicted_stage": "0%",
+      "confidence": 0.0,
+      "needs_manual_review": true
+    },
+    {
+      "image": "DJI_20260807144205_0005_D_JPG.rf.f9682543db17e7d781acfb0f6ec2e8c7.jpg",
+      "true_classes": [
+        "doors",
+        "roof_finished",
+        "walls",
+        "windows"
+      ],
+      "true_stage": "100%",
+      "predicted_classes": [],
+      "predicted_stage": "0%",
+      "confidence": 0.0,
+      "needs_manual_review": true
+    }
+  ],
+  "warning": "10 val images from 2 flight sequences. This measures the demo, not production accuracy or arbitrary internet photos."
+}

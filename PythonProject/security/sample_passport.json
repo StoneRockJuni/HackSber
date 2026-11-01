@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "passport_id": "603f769e9c2e4b10b1ca16df94459f1c",
+  "created_at": "2026-10-31T10:13:16Z",
+  "client_id": "CL-2026-004217",
+  "drone_id": "DJI-M3M-NSK-07",
+  "flight_task_id": "FT-2026-10-31-001",
+  "operator_id": "OP-014",
+  "image": {
+    "filename": "demo_object_1_ok.jpg",
+    "size_bytes": 66298,
+    "content_type": "image/jpeg"
+  },
+  "hash": {
+    "algorithm": "SHA-256",
+    "value": "4c7d9f699759532e926cbb24499093d3d346e7282934abe8d99d7ec71c685faa",
+    "scope": "file_bytes"
+  },
+  "captured_at": "2026-10-31T09:42:17",
+  "captured_at_source": "exif",
+  "gps": {
+    "lat": 54.8511,
+    "lon": 83.1946,
+    "alt_m": 142.3
+  },
+  "exif": {
+    "drone_model": "Mavic 3M",
+    "camera_make": "DJI",
+    "datetime_original_raw": "2026:10:31 09:42:17"
+  },
+  "verification_url": "https://stroykontur.local/verify/4c7d9f699759532e926cbb24",
+  "qr_payload": "https://stroykontur.local/verify/4c7d9f699759532e926cbb24",
+  "custody": [
+    {
+      "step": "capture",
+      "actor": "OP-014",
+      "timestamp": "2026-10-31T09:42:17"
+    },
+    {
+      "step": "passport_created",
+      "actor": "system",
+      "timestamp": "2026-10-31T10:13:16Z"
+    }
+  ],
+  "signature_alg": null,
+  "signature": null
+}

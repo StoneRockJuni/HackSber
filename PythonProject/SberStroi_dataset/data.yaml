@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 6
+names: ['doors', 'fence', 'foundation', 'roof_finished', 'walls', 'windows']
+
+roboflow:
+  workspace: deadkills-workspace
+  project: hackaton-sber
+  version: 1
+  license: Private
+  url: https://app.roboflow.com/deadkills-workspace/hackaton-sber/1

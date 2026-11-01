@@ -1,0 +1,115 @@
+{
+  "model": "models/sberstroi_yolov8n.onnx",
+  "samples": 10,
+  "detection": {
+    "doors": {
+      "gt": 5,
+      "predictions": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "ap50": 0.0
+    },
+    "fence": {
+      "gt": 0,
+      "predictions": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": null,
+      "f1": null,
+      "ap50": 0.0
+    },
+    "foundation": {
+      "gt": 5,
+      "predictions": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 2,
+      "precision": 1.0,
+      "recall": 0.6,
+      "f1": 0.75,
+      "ap50": 0.6
+    },
+    "roof_finished": {
+      "gt": 5,
+      "predictions": 12,
+      "tp": 1,
+      "fp": 11,
+      "fn": 4,
+      "precision": 0.083,
+      "recall": 0.2,
+      "f1": 0.118,
+      "ap50": 0.029
+    },
+    "walls": {
+      "gt": 5,
+      "predictions": 3,
+      "tp": 2,
+      "fp": 1,
+      "fn": 3,
+      "precision": 0.667,
+      "recall": 0.4,
+      "f1": 0.5,
+      "ap50": 0.4
+    },
+    "windows": {
+      "gt": 5,
+      "predictions": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": null,
+      "ap50": 0.0
+    }
+  },
+  "stage": {
+    "frames": 10,
+    "stage_accuracy": 0.4,
+    "auto_decided": 0,
+    "abstention_rate": 1.0,
+    "stage_accuracy_when_decided": null,
+    "confusion": {
+      "100%->0%": 2,
+      "100%->100%": 1,
+      "100%->50%": 2,
+      "50%->0%": 2,
+      "50%->50%": 3
+    }
+  },
+  "series": {
+    "series_count": 2,
+    "series_accuracy": 0.5,
+    "rows": [
+      {
+        "series": "DJI_20260807142835",
+        "frames": 5,
+        "true_stage": "50%",
+        "predicted_stage": "50%",
+        "confidence": 0.387,
+        "needs_review": true,
+        "reason": "series_unfinished_consensus"
+      },
+      {
+        "series": "DJI_20260807144205",
+        "frames": 5,
+        "true_stage": "100%",
+        "predicted_stage": "50%",
+        "confidence": 0.693,
+        "needs_review": true,
+        "reason": "series_unfinished_consensus"
+      }
+    ]
+  },
+  "problems": [
+    "нет детекций: DJI_20260807144205_0005_D_JPG.rf.f68cdab5f13f7a07370cd1d2c3f99f2b.jpg",
+    "нет детекций: DJI_20260807144205_0005_D_JPG.rf.f9682543db17e7d781acfb0f6ec2e8c7.jpg"
+  ],
+  "warning": "Демо-набор мал (десятки кадров, 2 объекта). Это не промышленный бенчмарк. Фото из интернета вне этого набора - out-of-distribution: они проверяют устойчивость, но не заменяют слепую полевую валидацию."
+}

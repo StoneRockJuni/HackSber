@@ -1,0 +1,16 @@
+.venv/
+.venv-*/
+.idea/
+.idea-macos-backup/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.streamlit/
+.tmp/
+.scratch/
+audit_trail.jsonl
+audit_trail.jsonl.*
+SberStroi_dataset/runs/
+ml_venv/
+*.pt
+docs/gallery/*_overlay.jpg

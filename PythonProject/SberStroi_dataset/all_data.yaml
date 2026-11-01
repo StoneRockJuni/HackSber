@@ -1,0 +1,6 @@
+path: C:/Users/Blackview/Desktop/хакатон/PythonProject/SberStroi_dataset
+train: train/images
+val: yolo/images/val
+
+nc: 6
+names: ['doors', 'fence', 'foundation', 'roof_finished', 'walls', 'windows']

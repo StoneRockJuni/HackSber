@@ -1,0 +1,8 @@
+# Training-only dependencies for SberStroi YOLOv8n.
+# The Streamlit app does NOT need these: it loads the exported ONNX with OpenCV DNN.
+# Install in a separate environment, not in the runtime .venv:
+#   python -m venv ml_venv
+#   ml_venv\Scripts\python.exe -m pip install -r requirements-ml.txt
+ultralytics>=8.4.194
+onnx>=1.23.2
+onnxslim>=0.1.98
