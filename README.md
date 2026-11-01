@@ -43,7 +43,6 @@ run.bat
 * [QR-маркер полётного задания](PythonProject/docs/QR_MARKER_DESIGN.md) — как должно работать.
 * [Протокол съёмки](PythonProject/docs/SURVEY_PROTOCOL.md) — высоты, перекрытие, GSD, JSON задания.
 * [Экономика](PythonProject/docs/ECONOMICS.md) — расчёт трудозатрат.
-* [Банк вопросов](PythonProject/docs/QA_BANK.md) — 135 вопросов к защите.
 * [Что изменено](PythonProject/docs/CHANGELOG.md) — история решений.
 
 ## Проверка любого фото
